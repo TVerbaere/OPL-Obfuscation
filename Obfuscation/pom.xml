@@ -31,7 +31,8 @@
   </executions>
   <configuration>
     <processors>
-      <processor>com.tibo.processors.LogProcessor</processor>
+      <processor>com.tibo.processors.LocalVariableChangeProcessor</processor>
+      <processor>com.tibo.processors.ParameterChangeProcessor</processor>
     </processors>
   </configuration>
   <dependencies>
