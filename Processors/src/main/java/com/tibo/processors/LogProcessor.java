@@ -1,7 +1,6 @@
 package com.tibo.processors;
 
 
-
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtCodeSnippetStatement;
 import spoon.reflect.declaration.CtClass;

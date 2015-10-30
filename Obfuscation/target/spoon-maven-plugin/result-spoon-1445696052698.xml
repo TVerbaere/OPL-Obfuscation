@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><project name="Obfuscation"><processors><processor>com.tibo.processors.LogProcessor</processor></processors><input>/home/thibaud/OPL/Obfuscation/src/main/java</input><output>/home/thibaud/OPL/Obfuscation/target/generated-sources/spoon</output><performance>575</performance></project>
