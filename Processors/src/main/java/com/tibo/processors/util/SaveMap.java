@@ -24,10 +24,19 @@ public class SaveMap {
 	/**
 	 * Teste la présence d'une clé.
 	 * @param key la clé a tester (autrement dit, l'ancien nom a tester)
-	 * @return
+	 * @return le resultat du test
 	 */
 	public static boolean contains(String key) {
 		return map.containsKey(key);
+	}
+	
+	/**
+	 * Teste la présence d'une valeur.
+	 * @param value la valeur a tester (autrement dit, le nouveau nom a tester)
+	 * @return le resultat du test
+	 */
+	public static boolean alreadyGenerate(String value) {
+		return map.containsValue(value);
 	}
 
 }
