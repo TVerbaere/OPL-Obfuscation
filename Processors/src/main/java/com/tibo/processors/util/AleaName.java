@@ -12,7 +12,7 @@ public class AleaName {
 	 * @return un nom de variable
 	 */
 	public static String variableNameAlea() {
-		//TODO
+		//TODO: générer des noms + vérifier qu'il n'est pas déja utilisé.
 		return "toto";
 	}
 	
