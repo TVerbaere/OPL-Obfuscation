@@ -6,12 +6,19 @@ package com.tibo.obfuscation;
  */
 public class App {
 	
+	private String titi = "Lala";
+	
 	public void fun(int x) {
 		String var1 = "tata";
-		System.out.println(x+var1);
+		System.out.println(x+var1+titi);
 	}
 	
     public static void main( String[] args ) {
-        System.out.println( "Hello World!" );
+    	try {
+    		System.out.println( "Hello World!" );
+    	}
+    	catch (Exception e) {
+    		System.out.println(e);
+    	}
     }
 }
