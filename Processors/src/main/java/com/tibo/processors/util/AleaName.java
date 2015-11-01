@@ -16,4 +16,14 @@ public class AleaName {
 		return "toto";
 	}
 	
+	public static String methodNameAlea() {
+		//TODO
+		return "titi";
+	}
+	
+	public static String classNameAlea() {
+		//TODO
+		return "tata";
+	}
+	
 }

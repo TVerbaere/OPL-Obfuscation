@@ -22,9 +22,7 @@ import spoon.reflect.visitor.filter.TypeFilter;
 public class VariableChangeProcessor extends AbstractProcessor<CtVariable> {
 			
 	@Override
-	public void process(CtVariable element) {
-		System.out.println(element.getSimpleName());
-		
+	public void process(CtVariable element) {		
 		// On récupère le nom actuel :
 		String oldname = element.getSimpleName();
 		// On génere un nouveau nom :
