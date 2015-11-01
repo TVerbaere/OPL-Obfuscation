@@ -28,7 +28,7 @@ public class VariableChangeProcessor extends AbstractProcessor<CtVariable> {
 		// On génere un nouveau nom :
 		String newname = AleaName.variableNameAlea();
 		// On sauvegarde ce couple :
-		SaveMap.save(oldname, newname);
+		SaveMap.saveVariableChange(oldname, newname);
 		
 		// On peut desormais changer le nom du paramètre :
 		element.setSimpleName(newname);

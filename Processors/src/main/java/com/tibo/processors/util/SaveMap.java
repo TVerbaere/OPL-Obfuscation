@@ -10,33 +10,89 @@ import java.util.Map;
  */
 public class SaveMap {
 	
-	private static Map<String, String> map = new HashMap<String, String>();
+	private static Map<String, String> methodsMap = new HashMap<String, String>();
+	private static Map<String, String> variablesMap = new HashMap<String, String>();
+	private static Map<String, String> classesMap = new HashMap<String, String>();
 	
 	/**
-	 * Permet de sauvegarder un couple.
-	 * @param key l'ancien nom à sauvegarder
-	 * @param value le nouveau nom à sauvegarder
+	 * Permet de sauvegarder un couple pour une variable.
+	 * @param key l'ancien nom de variable à sauvegarder
+	 * @param value le nouveau nom de variable à sauvegarder
 	 */
-	public static void save(String key, String value) {
-		map.put(key, value);
+	public static void saveVariableChange(String key, String value) {
+		variablesMap.put(key, value);
 	}
 	
 	/**
-	 * Teste la présence d'une clé.
-	 * @param key la clé a tester (autrement dit, l'ancien nom a tester)
+	 * Teste la présence d'une sauvegarde pour un ancien nom d'une variable.
+	 * @param key le nom de variable à tester
 	 * @return le resultat du test
 	 */
-	public static boolean contains(String key) {
-		return map.containsKey(key);
+	public static boolean containsVariable(String key) {
+		return variablesMap.containsKey(key);
 	}
 	
 	/**
-	 * Teste la présence d'une valeur.
-	 * @param value la valeur a tester (autrement dit, le nouveau nom a tester)
+	 * Teste la présence d'une sauvegarde pour un nouveau nom de variable.
+	 * @param value le nom de variable à tester
 	 * @return le resultat du test
 	 */
-	public static boolean alreadyGenerate(String value) {
-		return map.containsValue(value);
+	public static boolean alreadyGenerateforVariable(String value) {
+		return variablesMap.containsValue(value);
+	}
+	
+	/**
+	 * Permet de sauvegarder un couple pour une méthode.
+	 * @param key l'ancien nom de méthode à sauvegarder
+	 * @param value le nouveau nom de méthode à sauvegarder
+	 */
+	public static void saveMethodChange(String key, String value) {
+		methodsMap.put(key, value);
+	}
+	
+	/**
+	 * Teste la présence d'une sauvegarde pour un ancien nom d'une méthode.
+	 * @param key le nom de méthode à tester
+	 * @return le resultat du test
+	 */
+	public static boolean containsMethod(String key) {
+		return methodsMap.containsKey(key);
+	}
+	
+	/**
+	 * Teste la présence d'une sauvegarde pour un nouveau nom de méthode.
+	 * @param value le nom de méthode à tester
+	 * @return le resultat du test
+	 */
+	public static boolean alreadyGenerateforMethod(String value) {
+		return methodsMap.containsValue(value);
+	}
+	
+	/**
+	 * Permet de sauvegarder un couple pour une classe.
+	 * @param key l'ancien nom de classe à sauvegarder
+	 * @param value le nouveau nom de classe à sauvegarder
+	 */
+	public static void saveClassChange(String key, String value) {
+		classesMap.put(key, value);
+	}
+	
+	/**
+	 * Teste la présence d'une sauvegarde pour un ancien nom de classe
+	 * @param key le nom de classe à tester
+	 * @return le resultat du test
+	 */
+	public static boolean containsClass(String key) {
+		return classesMap.containsKey(key);
+	}
+	
+	/**
+	 * Teste la présence d'une sauvegarde pour un nouveau nom de classe.
+	 * @param value le nom de classe à tester
+	 * @return le resultat du test
+	 */
+	public static boolean alreadyGenerateforClass(String value) {
+		return classesMap.containsValue(value);
 	}
 
 }

@@ -23,7 +23,7 @@ public class AleaName {
 	
 	public static String classNameAlea() {
 		//TODO
-		return "tata";
+		return "Tata";
 	}
 	
 }
