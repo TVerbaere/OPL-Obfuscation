@@ -73,6 +73,9 @@ public class RefractorProcessor extends AbstractProcessor<CtClass> {
 			String current_name = e3.getVariable().getDeclaringType().getSimpleName();
 			if (SaveMap.containsClass(current_name))
 				e3.getVariable().getDeclaringType().setSimpleName(SaveMap.getNewClassName(current_name));
+			current_name = e3.getVariable().getSimpleName();
+			if (SaveMap.containsVariable(current_name))
+				e3.getVariable().setSimpleName(SaveMap.getNewVariableName(current_name));
 		}
 		
 		// Refractoring pour les appels des contructeurs :

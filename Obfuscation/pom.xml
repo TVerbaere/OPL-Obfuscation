@@ -32,8 +32,8 @@
   <configuration>
     <processors>
       <processor>com.tibo.processors.ClassChangeProcessor</processor>
-      <processor>com.tibo.processors.RefractorProcessor</processor>
       <processor>com.tibo.processors.VariableChangeProcessor</processor>
+      <processor>com.tibo.processors.RefractorProcessor</processor>
     </processors>
   </configuration>
   <dependencies>
