@@ -40,7 +40,7 @@ public class SaveMap {
 	public static boolean alreadyGenerateforVariable(String value) {
 		return variablesMap.containsValue(value);
 	}
-	
+		
 	/**
 	 * Permet de sauvegarder un couple pour une méthode.
 	 * @param key l'ancien nom de méthode à sauvegarder
@@ -94,5 +94,15 @@ public class SaveMap {
 	public static boolean alreadyGenerateforClass(String value) {
 		return classesMap.containsValue(value);
 	}
+	
+	/**
+	 * Retourne le nouveau nom associé à l'ancien passé en paramètre.
+	 * @param oldname l'ancien nom de classe
+	 * @return le nouveau nom de classe
+	 */
+	public static String getNewClassName(String oldname) {
+		return classesMap.get(oldname);
+	}
+	
 
 }

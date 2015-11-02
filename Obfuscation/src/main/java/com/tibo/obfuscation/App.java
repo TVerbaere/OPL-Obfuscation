@@ -12,6 +12,10 @@ public class App {
 		
 	}
 	
+	public App returnApp(App a) {
+		return a;
+	}
+	
 	public static int fun(int x) {
 		String var1 = "tata";
 		System.out.println(x+var1+titi);
