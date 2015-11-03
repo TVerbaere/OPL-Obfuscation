@@ -4,20 +4,22 @@ package com.tibo.obfuscation;
  * Hello world!
  *
  */
-public class App {
+public class App{
 	
-	private static String titi = "Lala";
+	private String titi = "Lala";
+	private  Ppa ppa;
 		
 	public App() {
-		
+		ppa = new Ppa();
 	}
 	
 	public App returnApp(App a) {
 		return a;
 	}
 	
-	public static int fun(int x) {
+	public int fun(int x) {
 		String var1 = "tata";
+		var1 += ppa.toto(0);
 		System.out.println(x+var1+titi);
 		App ap = new App();
 		
@@ -26,12 +28,10 @@ public class App {
 	}
 	
     public static void main( String[] args ) {
-    	try {
-    		System.out.println( "Hello World!" );
-    		fun(6);
-    	}
-    	catch (Exception e) {
-    		System.out.println(e);
-    	}
+    			System.out.println( "Hello World!" );
+    	
+    		App app = new App();
+    		app.fun(6);
+    
     }
 }

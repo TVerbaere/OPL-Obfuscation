@@ -112,5 +112,14 @@ public class SaveMap {
 	public static String getNewVariableName(String oldname) {
 		return variablesMap.get(oldname);
 	}
+	
+	/**
+	 * Retourne le nouveau nom associé à l'ancien passé en paramètre.
+	 * @param oldname l'ancien nom de methode
+	 * @return le nouveau nom de  methode
+	 */
+	public static String getNewMethodName(String oldname) {
+		return methodsMap.get(oldname);
+	}
 
 }
