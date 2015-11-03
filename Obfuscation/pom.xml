@@ -18,14 +18,14 @@
 <build>
 <plugins>
 <plugin>
-  <groupId>fr.inria.gforge.spoon</groupId>
-  <artifactId>spoon-maven-plugin</artifactId>
-  <version>2.2</version>
-  <executions>
-    <execution>
-      <phase>generate-sources</phase>
-      <goals>
-        <goal>generate</goal>
+	<groupId>fr.inria.gforge.spoon</groupId>
+	<artifactId>spoon-maven-plugin</artifactId>
+	<version>2.2</version>
+	<executions>
+		<execution>
+			<phase>generate-sources</phase>
+			<goals>
+				<goal>generate</goal>
       </goals>
     </execution>
   </executions>
@@ -34,6 +34,7 @@
       <processor>com.tibo.processors.ClassChangeProcessor</processor>
       <processor>com.tibo.processors.VariableChangeProcessor</processor>
       <processor>com.tibo.processors.RefractorProcessor</processor>
+      <processor>com.tibo.processors.DocChangeProcessor</processor>
     </processors>
   </configuration>
   <dependencies>

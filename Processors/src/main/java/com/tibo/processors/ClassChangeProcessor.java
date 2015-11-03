@@ -18,6 +18,7 @@ public class ClassChangeProcessor extends AbstractProcessor<CtClass> {
 	public void process(CtClass element) {
 		// On récupère le nom actuel :
 		String oldname = element.getSimpleName();
+
 		// On génere un nouveau nom :
 		String newname = AleaName.classNameAlea();
 		// On sauvegarde ce couple :

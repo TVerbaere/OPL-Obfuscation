@@ -4,7 +4,7 @@ package com.tibo.obfuscation;
  * Hello world!
  *
  */
-public class App extends Nana {
+public class App {
 	
 	private static String titi = "Lala";
 		
@@ -20,9 +20,8 @@ public class App extends Nana {
 		String var1 = "tata";
 		System.out.println(x+var1+titi);
 		App ap = new App();
-		Nana n = new Nana();
-		n.nono();
-		String tmp = n.var;
+		
+	     
 		return x;
 	}
 	
