@@ -14,7 +14,6 @@ public class ListPoet extends ArrayList {
 	public ListPoet(){
 
 		try {
-		
 		InputStream ips = new FileInputStream("../comment.txt");
 	
 		InputStreamReader ipsr = new InputStreamReader(ips);

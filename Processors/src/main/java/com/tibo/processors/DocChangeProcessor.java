@@ -27,10 +27,10 @@ public class DocChangeProcessor extends AbstractProcessor<CtElement> {
 
 	@Override
 	public void process(CtElement element) {
-		
+	
 		getEnvironment().setGenerateJavadoc(true);
 		getEnvironment().setAutoImports(true);
-		
+	
 		String result ="";
 		
 		 int length = 2 + (int)(Math.random() * ((5 - 3) + 1));
@@ -49,14 +49,11 @@ public class DocChangeProcessor extends AbstractProcessor<CtElement> {
 	private String getSentence(int line) {
 
 		String comment = poetry.get(line).trim();
-		System.out.println(comment);
 		return comment;
 	}
 
 
 	private List<String> getAllSentence() {
-
-
 		return  new ListPoet();
 	}
 

@@ -55,6 +55,9 @@ public class RefractorProcessor extends AbstractProcessor<CtClass> {
 			if (SaveMap.containsClass(current_name)) {
 				e.getExecutable().getDeclaringType().setSimpleName(SaveMap.getNewClassName(current_name));
 			}
+			current_name = e.getExecutable().getSimpleName();
+			if (SaveMap.containsMethod(current_name))
+				e.getExecutable().setSimpleName(SaveMap.getNewMethodName(current_name));
 		}
 		
 		// Refractoring pour les variables :

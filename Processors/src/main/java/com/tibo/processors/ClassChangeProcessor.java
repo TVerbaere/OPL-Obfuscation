@@ -4,7 +4,7 @@ import com.tibo.processors.util.AleaName;
 import com.tibo.processors.util.SaveMap;
 
 import spoon.processing.AbstractProcessor;
-import spoon.reflect.declaration.CtClass;
+import spoon.reflect.declaration.CtType;
 
 
 /**
@@ -12,10 +12,10 @@ import spoon.reflect.declaration.CtClass;
  * @author thibaud
  *
  */
-public class ClassChangeProcessor extends AbstractProcessor<CtClass> {
+public class ClassChangeProcessor extends AbstractProcessor<CtType> {
 
 	@Override
-	public void process(CtClass element) {
+	public void process(CtType element) {
 		// On récupère le nom actuel :
 		String oldname = element.getSimpleName();
 
