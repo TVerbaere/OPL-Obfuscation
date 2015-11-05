@@ -49,6 +49,8 @@ public class MethodChangeProcessor extends AbstractProcessor<CtMethod> {
 			// Touche à rien Spoon !! c'est le main voyons !
 			
 		}
+		
+		// Pas d'autres modifications, elles se feront dans le RefractorProcessor...
 
 	}
 

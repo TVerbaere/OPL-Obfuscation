@@ -33,8 +33,7 @@ public class VariableChangeProcessor extends AbstractProcessor<CtVariable> {
 		// On peut desormais changer le nom du paramètre :
 		element.setSimpleName(newname);
 		
-		// Si getParent declenche une exception alors c'est un attribut.
-		// Sinon c'est soit un paramètre, soit une variable locale.
+		// On va tout de suite s'occuper des variables locales :
 		try {
 			// On va maintenant changer tout les appels à ce paramètre :
 			if (element.getParent(CtExecutable.class).getBody() != null) {
@@ -52,6 +51,7 @@ public class VariableChangeProcessor extends AbstractProcessor<CtVariable> {
 			}
 		}
 		catch (NullPointerException npe) {
+			// Variable non contenue dans une méthode, on passe.
 		}
 		
 	}

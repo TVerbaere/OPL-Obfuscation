@@ -60,16 +60,7 @@ public class RefractorProcessor extends AbstractProcessor<CtClass> {
 			if (SaveMap.containsMethod(current_name))
 				e.getExecutable().setSimpleName(SaveMap.getNewMethodName(current_name));
 		}
-		
-		// Refractoring pour les appels des variables :
-		Filter<CtVariableAccess> filter6 = new TypeFilter(CtVariableAccess.class);
-		List<CtVariableAccess> list6 = element.getElements(filter6);
-		for (CtVariableAccess e6 : list6) {
-			String current_name = e6.getVariable().getSimpleName();
-			if (SaveMap.containsVariable(current_name))
-				e6.getVariable().setSimpleName(SaveMap.getNewVariableName(current_name));
-		}
-		
+				
 		// Refractoring pour les appels d'attributs :
 		Filter<CtFieldAccess> filter3 = new TypeFilter(CtFieldAccess.class);
 		List<CtFieldAccess> list3 = element.getElements(filter3);
