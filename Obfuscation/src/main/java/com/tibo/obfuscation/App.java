@@ -28,7 +28,7 @@ public class App{
 	}
 	
     public static void main( String[] args ) {
-    			System.out.println( "Hello World!" );
+    		System.out.println( "Hello World!" );
     	
     		App app = new App();
     		app.fun(6);

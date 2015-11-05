@@ -8,6 +8,7 @@ import com.tibo.processors.util.SaveMap;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtConstructorCall;
 import spoon.reflect.code.CtFieldAccess;
+import spoon.reflect.code.CtVariableAccess;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
@@ -60,16 +61,16 @@ public class RefractorProcessor extends AbstractProcessor<CtClass> {
 				e.getExecutable().setSimpleName(SaveMap.getNewMethodName(current_name));
 		}
 		
-		// Refractoring pour les variables :
-		Filter<CtVariable> filter2 = new TypeFilter(CtVariable.class);
-		List<CtVariable> list2 = element.getElements(filter2);
-		for (CtVariable e2 : list2) {
-			String current_name = e2.getReference().getType().getSimpleName();
-			if (SaveMap.containsClass(current_name))
-				e2.getReference().getType().setSimpleName(SaveMap.getNewClassName(current_name));
+		// Refractoring pour les appels des variables :
+		Filter<CtVariableAccess> filter6 = new TypeFilter(CtVariableAccess.class);
+		List<CtVariableAccess> list6 = element.getElements(filter6);
+		for (CtVariableAccess e6 : list6) {
+			String current_name = e6.getVariable().getSimpleName();
+			if (SaveMap.containsVariable(current_name))
+				e6.getVariable().setSimpleName(SaveMap.getNewVariableName(current_name));
 		}
 		
-		// Refractoring pour les attributs :
+		// Refractoring pour les appels d'attributs :
 		Filter<CtFieldAccess> filter3 = new TypeFilter(CtFieldAccess.class);
 		List<CtFieldAccess> list3 = element.getElements(filter3);
 		for (CtFieldAccess e3 : list3) {
@@ -90,6 +91,15 @@ public class RefractorProcessor extends AbstractProcessor<CtClass> {
 				e4.getType().setSimpleName(SaveMap.getNewClassName(current_name));
 		}
 		
+		// Refractoring pour les types des variables :
+		Filter<CtVariable> filter2 = new TypeFilter(CtVariable.class);
+		List<CtVariable> list2 = element.getElements(filter2);
+		for (CtVariable e2 : list2) {
+			String current_name = e2.getReference().getType().getSimpleName();
+			if (SaveMap.containsClass(current_name))
+				e2.getReference().getType().setSimpleName(SaveMap.getNewClassName(current_name));
+		}
+				
 		// Refractoring pour les signatures des méthodes.
 		Filter<CtMethod> filter5 = new TypeFilter(CtMethod.class);
 		List<CtMethod> list5 = element.getElements(filter5);

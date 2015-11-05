@@ -52,16 +52,6 @@ public class VariableChangeProcessor extends AbstractProcessor<CtVariable> {
 			}
 		}
 		catch (NullPointerException npe) {
-			// On créé un filtre sur les accès aux attributs :
-			Filter<CtFieldAccess> filter = new TypeFilter(CtFieldAccess.class);
-			// On applique ce filtre tout les éléments de la classe :
-			List<CtFieldAccess> list = element.getParent(CtElement.class).getElements(filter);
-			
-			// Quand on trouve l'ancien nom, on le remplace directement par le nouveau nom :
-			for (CtFieldAccess e : list) {
-				if (e.getVariable().getSimpleName().equals(oldname))
-					e.getVariable().setSimpleName(newname);
-			}
 		}
 		
 	}
