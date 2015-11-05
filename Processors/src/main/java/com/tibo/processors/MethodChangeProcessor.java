@@ -18,8 +18,8 @@ import spoon.reflect.visitor.Filter;
 import spoon.reflect.visitor.filter.TypeFilter;
 
 /**
- * Processor permettant de changer les noms des variables des fonctions.
- * @author thibaudlt
+ * Processor permettant de changer les noms des fonctions.
+ * @author thibault
  *
  */
 public class MethodChangeProcessor extends AbstractProcessor<CtMethod> {
@@ -28,7 +28,8 @@ public class MethodChangeProcessor extends AbstractProcessor<CtMethod> {
 	public void process(CtMethod element) {		
 		// On récupère le nom actuel :
 		String oldname = element.getSimpleName();
-		String newname="";
+		String newname= "";
+		
 		if(!oldname.equals("main")){
 			
 			if(!SaveMap.containsMethod(oldname)){	
@@ -37,9 +38,7 @@ public class MethodChangeProcessor extends AbstractProcessor<CtMethod> {
 				// On sauvegarde ce couple :
 				SaveMap.saveMethodChange(oldname, newname);
 			}else{
-
-			
-				// On recupère le nouveau nom :
+				
 				newname = SaveMap.getNewMethodName(oldname);
 			
 			}
@@ -47,22 +46,8 @@ public class MethodChangeProcessor extends AbstractProcessor<CtMethod> {
 			element.setSimpleName(newname);
 
 		}else{
+			// Touche à rien Spoon !! c'est le main voyons !
 			
-			newname ="main";
-		}
-		// On va maintenant changer tout les appels à ce paramètre :
-		if (element.getParent(CtClass.class) != null) {
-			// On créé un filtre sur les accès aux variables :
-			Filter<CtInvocation> filter = new TypeFilter(CtInvocation.class);
-			// On applique ce filtre sur la méthode qui a pour paramètre celui que nous avons changé :
-			List<CtInvocation> list = element.getParent(CtClass.class).getElements(filter);
-
-			// Quand on trouve l'ancien nom, on le remplace directement par le nouveau nom :
-			for (CtInvocation e : list) {
-				if (e.getExecutable().getSimpleName().equals(oldname))
-					e.getExecutable().setSimpleName(newname);
-			}
-
 		}
 
 	}
