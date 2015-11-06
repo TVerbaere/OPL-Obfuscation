@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 import com.martiansoftware.jsap.JSAP;
@@ -14,7 +15,8 @@ public class ListPoet extends ArrayList {
 	public ListPoet(){
 
 		try {
-		InputStream ips = new FileInputStream("../comment.txt");
+			
+		InputStream ips = getClass().getResourceAsStream("/comment.txt");
 	
 		InputStreamReader ipsr = new InputStreamReader(ips);
 		BufferedReader br = new BufferedReader(ipsr);
