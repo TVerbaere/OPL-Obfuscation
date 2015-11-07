@@ -9,7 +9,8 @@ import com.tibo.processors.util.ListPoet;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtElement;
-import spoon.reflect.declaration.CtExecutable;
+import spoon.reflect.declaration.CtMethod;
+import spoon.reflect.declaration.CtVariable;
 
 
 
@@ -33,16 +34,19 @@ public class DocChangeProcessor extends AbstractProcessor<CtElement> {
 	
 		String result ="";
 		
-		 int length = 2 + (int)(Math.random() * ((5 - 3) + 1));
-		for(int i =0; i <= length ; i++){
-			if(line > poetry.size()){
-				line =0;
+		if (element instanceof CtClass || element instanceof CtMethod
+				|| element instanceof CtVariable) {
+			int length = 2 + (int)(Math.random() * ((5 - 3) + 1));
+			for(int i =0; i < length ; i++){
+				if(line > poetry.size()-1){
+					line =0;
+				}
+				result += getSentence(line)+"\n";
+				
+				line ++;
 			}
-		result += getSentence(line)+"\n";
-			
-			line ++;
+			element.setDocComment(result);
 		}
-		element.setDocComment(result);
 	}
 
 

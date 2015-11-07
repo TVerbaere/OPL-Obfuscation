@@ -23,15 +23,16 @@ public class App{
 		System.out.println(x+var1+titi);
 		App ap = new App();
 		
-	     
-		return x;
+		ppa.\u0074\u006f\u0074\u006f(0);
+		
+		return \u0078;
 	}
 	
-    public static void main( String[] args ) {
+    public static void main(String[] arg) {
     		System.out.println( "Hello World!" );
     	
     		App app = new App();
-    		app.fun(6);
+    		System.out.println(app.fun(6));
     
     }
 }

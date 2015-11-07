@@ -1,21 +1,10 @@
 package com.tibo.processors;
 
-import java.util.List;
-
 import com.tibo.processors.util.AleaName;
 import com.tibo.processors.util.SaveMap;
 
 import spoon.processing.AbstractProcessor;
-import spoon.reflect.code.CtFieldAccess;
-import spoon.reflect.code.CtInvocation;
-import spoon.reflect.code.CtVariableAccess;
-import spoon.reflect.declaration.CtVariable;
-import spoon.reflect.declaration.CtExecutable;
 import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.declaration.CtClass;
-import spoon.reflect.declaration.CtElement;
-import spoon.reflect.visitor.Filter;
-import spoon.reflect.visitor.filter.TypeFilter;
 
 /**
  * Processor permettant de changer les noms des fonctions.

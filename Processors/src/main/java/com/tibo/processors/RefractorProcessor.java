@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Set;
 
 import com.tibo.processors.util.SaveMap;
+import com.tibo.processors.util.UnicodeConverter;
 
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtConstructorCall;
 import spoon.reflect.code.CtFieldAccess;
-import spoon.reflect.code.CtVariableAccess;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;
@@ -54,11 +54,14 @@ public class RefractorProcessor extends AbstractProcessor<CtClass> {
 		for (CtInvocation e : list) {
 			String current_name = e.getExecutable().getDeclaringType().getSimpleName();
 			if (SaveMap.containsClass(current_name)) {
-				e.getExecutable().getDeclaringType().setSimpleName(SaveMap.getNewClassName(current_name));
+				String unicode = new UnicodeConverter(SaveMap.getNewClassName(current_name)).proceed();
+				e.getExecutable().getDeclaringType().setSimpleName(unicode);
 			}
 			current_name = e.getExecutable().getSimpleName();
-			if (SaveMap.containsMethod(current_name))
-				e.getExecutable().setSimpleName(SaveMap.getNewMethodName(current_name));
+			if (SaveMap.containsMethod(current_name)) {
+				String unicode = new UnicodeConverter(SaveMap.getNewMethodName(current_name)).proceed();
+				e.getExecutable().setSimpleName(unicode);
+			}
 		}
 				
 		// Refractoring pour les appels d'attributs :
@@ -66,11 +69,15 @@ public class RefractorProcessor extends AbstractProcessor<CtClass> {
 		List<CtFieldAccess> list3 = element.getElements(filter3);
 		for (CtFieldAccess e3 : list3) {
 			String current_name = e3.getVariable().getDeclaringType().getSimpleName();
-			if (SaveMap.containsClass(current_name))
-				e3.getVariable().getDeclaringType().setSimpleName(SaveMap.getNewClassName(current_name));
+			if (SaveMap.containsClass(current_name)) {
+				String unicode = new UnicodeConverter(SaveMap.getNewClassName(current_name)).proceed();
+				e3.getVariable().getDeclaringType().setSimpleName(unicode);
+			}
 			current_name = e3.getVariable().getSimpleName();
-			if (SaveMap.containsVariable(current_name))
-				e3.getVariable().setSimpleName(SaveMap.getNewVariableName(current_name));
+			if (SaveMap.containsVariable(current_name)) {
+				String unicode = new UnicodeConverter(SaveMap.getNewVariableName(current_name)).proceed();
+				e3.getVariable().setSimpleName(unicode);
+			}
 		}
 		
 		// Refractoring pour les appels des contructeurs :
@@ -78,8 +85,10 @@ public class RefractorProcessor extends AbstractProcessor<CtClass> {
 		List<CtConstructorCall> list4 = element.getElements(filter4);
 		for (CtConstructorCall e4 : list4) {
 			String current_name = e4.getType().getSimpleName();
-			if (SaveMap.containsClass(current_name))
-				e4.getType().setSimpleName(SaveMap.getNewClassName(current_name));
+			if (SaveMap.containsClass(current_name)) {
+				String unicode = new UnicodeConverter(SaveMap.getNewClassName(current_name)).proceed();
+				e4.getType().setSimpleName(unicode);
+			}
 		}
 		
 		// Refractoring pour les types des variables :

@@ -4,13 +4,13 @@ import java.util.List;
 
 import com.tibo.processors.util.AleaName;
 import com.tibo.processors.util.SaveMap;
+import com.tibo.processors.util.UnicodeConverter;
 
 import spoon.processing.AbstractProcessor;
-import spoon.reflect.code.CtFieldAccess;
 import spoon.reflect.code.CtVariableAccess;
 import spoon.reflect.declaration.CtVariable;
 import spoon.reflect.declaration.CtExecutable;
-import spoon.reflect.declaration.CtElement;
+
 import spoon.reflect.visitor.Filter;
 import spoon.reflect.visitor.filter.TypeFilter;
 
@@ -44,8 +44,10 @@ public class VariableChangeProcessor extends AbstractProcessor<CtVariable> {
 				
 				// Quand on trouve l'ancien nom, on le remplace directement par le nouveau nom :
 				for (CtVariableAccess e : list) {
-					if (e.getVariable().getSimpleName().equals(oldname))
-						e.getVariable().setSimpleName(newname);
+					if (e.getVariable().getSimpleName().equals(oldname)) {
+						String unicode_name = new UnicodeConverter(newname).proceed();
+						e.getVariable().setSimpleName(unicode_name);
+					}
 				}
 	
 			}
