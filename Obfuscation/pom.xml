@@ -1,68 +1,48 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>com.tibo.obfuscation</groupId>
-	<artifactId>Obfuscation</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<packaging>jar</packaging>
-
-	<name>Obfuscation</name>
-	<url>http://maven.apache.org</url>
-
-	<properties>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.tibo.processors</groupId>
+  <artifactId>Obfuscation</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>Obfuscation</name>
+  <url>http://maven.apache.org</url>
+  
+  	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<!-- Code a rajouter dans chaque projet maven pour tester -->
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>fr.inria.gforge.spoon</groupId>
-				<artifactId>spoon-maven-plugin</artifactId>
-				<version>2.2</version>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<processors>
-						<processor>com.tibo.processors.ClassChangeProcessor</processor>
-						<processor>com.tibo.processors.VariableChangeProcessor</processor>
-						<processor>com.tibo.processors.MethodChangeProcessor</processor>
-						<processor>com.tibo.processors.RefractorProcessor</processor>
-						<processor>com.tibo.processors.DocChangeProcessor</processor>
-						<processor>com.tibo.processors.StringEncoderProcessor</processor>
-					</processors>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>com.tibo.processors</groupId>
-						<artifactId>Processors</artifactId>
-						<version>1.0-SNAPSHOT</version>
-					</dependency>
-				</dependencies>
-			</plugin>
+  <dependencies>
+    <dependency>
+      <groupId>fr.inria.gforge.spoon</groupId>
+      <artifactId>spoon-core</artifactId>
+      <version>4.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.9</version>
+    </dependency>
+  </dependencies>
+  
+  <build>
+  <plugins>
+				<plugin>
+		            <artifactId>maven-compiler-plugin</artifactId>
+		            <version>2.3.2</version>
+		            <configuration>
+		                <source>1.6</source>
+		                <target>1.6</target>
+		                <compilerArgument></compilerArgument>
+		            </configuration>
+		        </plugin>
+  	</plugins>
+  </build>
 
-		</plugins>
-	</build>
-	<!-- fin -->
-
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
-	    <dependency>
-	      <groupId>commons-codec</groupId>
-	      <artifactId>commons-codec</artifactId>
-	      <version>1.9</version>
-	    </dependency>
-	</dependencies>
 </project>

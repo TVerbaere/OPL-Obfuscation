@@ -8,7 +8,6 @@ import com.tibo.processors.util.SaveMap;
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtConstructorCall;
 import spoon.reflect.code.CtFieldAccess;
-import spoon.reflect.code.CtVariableAccess;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtMethod;

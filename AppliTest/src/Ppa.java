@@ -1,8 +1,4 @@
-package com.tibo.obfuscation;
-
 public class Ppa implements ulul{
-	
-
 		
 	public Ppa() {
 		
@@ -10,8 +6,7 @@ public class Ppa implements ulul{
 	
 	@Override
 	public int toto(int i){
-	
-	return i;
+		return i;
 	}
 	
-	}
+}

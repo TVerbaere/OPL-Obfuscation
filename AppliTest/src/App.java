@@ -1,5 +1,3 @@
-package com.tibo.obfuscation;
-
 /**
  * Hello world!
  *

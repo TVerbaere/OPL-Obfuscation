@@ -4,15 +4,10 @@ import java.nio.charset.StandardCharsets;
 
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtCodeSnippetExpression;
-import spoon.reflect.code.CtCodeSnippetStatement;
-import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtLiteral;
-import spoon.reflect.declaration.CtClass;
-import spoon.reflect.declaration.CtType;
+
 
 import org.apache.commons.codec.binary.Base64;
-
-import com.tibo.processors.util.AleaName;
 
 
 /**
