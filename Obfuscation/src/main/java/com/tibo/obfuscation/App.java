@@ -1,5 +1,6 @@
 package com.tibo.obfuscation;
 
+
 /**
  * Hello world!
  *
@@ -23,15 +24,18 @@ public class App{
 		System.out.println(x+var1+titi);
 		App ap = new App();
 		
-		ppa.\u0074\u006f\u0074\u006f(0);
+		ppa.toto(0);
 		
-		return \u0078;
+		return x;
 	}
 	
     public static void main(String[] arg) {
     		System.out.println( "Hello World!" );
-    	
+    		    	
     		App app = new App();
+    		
+    		assert true;
+    		
     		System.out.println(app.fun(6));
     
     }

@@ -31,6 +31,8 @@
 				</executions>
 				<configuration>
 					<processors>
+						<processor>com.tibo.processors.RemoveAnnotationProcessor</processor>
+						<processor>com.tibo.processors.RemoveAssertProcessor</processor>
 						<processor>com.tibo.processors.ClassChangeProcessor</processor>
 						<processor>com.tibo.processors.VariableChangeProcessor</processor>
 						<processor>com.tibo.processors.MethodChangeProcessor</processor>
