@@ -15,7 +15,7 @@ import org.apache.commons.codec.binary.Base64;
  * @author thibaud
  *
  */
-public class StringEncoderProcessor extends AbstractProcessor<CtLiteral> {
+public class PrimitiveEncoderProcessor extends AbstractProcessor<CtLiteral> {
 
 	@Override
 	public void process(CtLiteral element) {
