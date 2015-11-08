@@ -33,14 +33,17 @@
 					<processors>
 						<processor>com.tibo.processors.RemoveAnnotationProcessor</processor>
 						<processor>com.tibo.processors.RemoveAssertProcessor</processor>
+
 						<processor>com.tibo.processors.LoopChangeProcessor</processor>
 						<processor>com.tibo.processors.IfChangeProcessor</processor>
+
+						<processor>com.tibo.processors.DocChangeProcessor</processor>
+
 						<processor>com.tibo.processors.ClassChangeProcessor</processor>
 						<processor>com.tibo.processors.VariableChangeProcessor</processor>
 						<processor>com.tibo.processors.MethodChangeProcessor</processor>
 						<processor>com.tibo.processors.RefractorProcessor</processor>
-						<processor>com.tibo.processors.DocChangeProcessor</processor>
-						<processor>com.tibo.processors.StringEncoderProcessor</processor>
+						<processor>com.tibo.processors.PrimitiveEncoderProcessor</processor>
 					</processors>
 				</configuration>
 				<dependencies>

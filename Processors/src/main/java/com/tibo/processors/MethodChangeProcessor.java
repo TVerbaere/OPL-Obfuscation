@@ -2,8 +2,10 @@ package com.tibo.processors;
 
 import com.tibo.processors.util.AleaName;
 import com.tibo.processors.util.SaveMap;
+import com.tibo.processors.util.UnicodeConverter;
 
 import spoon.processing.AbstractProcessor;
+import spoon.reflect.code.CtStatement;
 import spoon.reflect.declaration.CtMethod;
 
 /**
@@ -14,7 +16,13 @@ import spoon.reflect.declaration.CtMethod;
 public class MethodChangeProcessor extends AbstractProcessor<CtMethod> {
 
 	@Override
-	public void process(CtMethod element) {		
+	public void process(CtMethod element) {
+		
+		// Encodage de la signature de la méthode :
+		String returntype = element.getType().getSimpleName();
+		if (element.getType().isPrimitive())
+			element.getType().setSimpleName(new UnicodeConverter(returntype).proceed());
+		
 		// On récupère le nom actuel :
 		String oldname = element.getSimpleName();
 		String newname= "";
