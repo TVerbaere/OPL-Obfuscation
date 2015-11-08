@@ -15,8 +15,7 @@ import spoon.reflect.declaration.CtType;
 public class ClassChangeProcessor extends AbstractProcessor<CtType> {
 
 	@Override
-	public void process(CtType element) {
-		
+	public void process(CtType element) {				
 		// On récupère le nom actuel :
 		String oldname = element.getSimpleName();
 
