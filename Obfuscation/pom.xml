@@ -18,32 +18,17 @@
 	<build>
 
 		<plugins>
-		
+
 			<plugin>
 				<groupId>fr.inria.gforge.spoon</groupId>
 				<artifactId>spoon-maven-plugin</artifactId>
 				<version>2.2</version>
 				<executions>
 
-					<execution>
-
-						<id>first-execution</id>
-
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<processors>
-								<processor>com.tibo.processors.LoopChangeProcessor</processor>
-								<processor>com.tibo.processors.IfChangeProcessor</processor>
-							</processors>
-						</configuration>
-					</execution>
-
 				
+
 					<execution>
-						<id>second-execution</id>
+						
 
 						<phase>generate-sources</phase>
 						<goals>
@@ -53,6 +38,8 @@
 						<configuration>
 
 							<processors>
+								<processor>com.tibo.processors.IfChangeProcessor</processor>
+								<processor>com.tibo.processors.LoopChangeProcessor</processor>
 								<processor>com.tibo.processors.RemoveAnnotationProcessor</processor>
 								<processor>com.tibo.processors.RemoveAssertProcessor</processor>
 								<processor>com.tibo.processors.DocChangeProcessor</processor>
@@ -62,7 +49,7 @@
 								<processor>com.tibo.processors.RefractorProcessor</processor>
 								<processor>com.tibo.processors.PrimitiveEncoderProcessor</processor>
 							</processors>
-							
+
 						</configuration>
 					</execution>
 
