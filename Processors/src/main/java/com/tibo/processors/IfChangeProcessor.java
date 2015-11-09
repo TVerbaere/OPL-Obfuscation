@@ -5,6 +5,7 @@ import org.eclipse.jdt.internal.compiler.ast.Block;
 
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtBlock;
+import spoon.reflect.code.CtCodeSnippetExpression;
 import spoon.reflect.code.CtCodeSnippetStatement;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtIf;
@@ -49,6 +50,18 @@ public class IfChangeProcessor extends AbstractProcessor<CtIf> {
 			fi.insertEnd(snippetEnd);
 
 		}
+		
+		CtExpression old = element.getCondition();
+		
+		CtCodeSnippetExpression wen = getFactory().Core().createCodeSnippetExpression();
+		
+		String condition = old.toString() +" || false";
+		
+		wen.setValue(condition);
+		
+		element.setCondition(wen);
+		
+		
 		 
 		
 	}
