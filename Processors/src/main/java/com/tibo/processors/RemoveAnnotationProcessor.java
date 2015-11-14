@@ -12,7 +12,8 @@ public class RemoveAnnotationProcessor extends AbstractProcessor<CtAnnotation> {
 
 	@Override
 	public void process(CtAnnotation element) {
-		element.replace(null);	
+		if (element.getType().getPackage().equals("java.lang"))
+			element.replace(null);	
 	}
 
 }

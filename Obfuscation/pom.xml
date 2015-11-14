@@ -25,11 +25,7 @@
 				<version>2.2</version>
 				<executions>
 
-
-
 					<execution>
-
-
 						<phase>generate-sources</phase>
 						<goals>
 							<goal>generate</goal>
