@@ -56,9 +56,9 @@ public class UselessIfs {
 	}
 
 	void UselessNegativeOrIf(){
-		boolean toto = false;
 		
-		if(true == toto || toto == true){
+		
+		if(true == new Boolean("false") || new Boolean("false") == true){
 
 		}
 	}
