@@ -36,97 +36,104 @@ public class IfChangeProcessor extends AbstractProcessor<CtIf> {
 		// On récupère le body actuel :
 
 		CtBlock fi; 
-		
-		
-		
-
-			this.init();
 
 
 
-			int nbAddLoop =  1+ (int)(Math.random() * ((3 - 1)));
 
-			nbAddLoop =1;
-
-			for(int i = nbAddLoop;i > 0; i--){
-				fi = (CtBlock) element.getThenStatement();
-
-					fi = (CtBlock) element.getThenStatement();
-				element.setThenStatement(getDummyStringIf());
-				((CtIf) element.getThenStatement().getElements(new TypeFilter(CtIf.class)).get(0)).setThenStatement(fi);
-			
-				
-				/**if(i==1){ ToDO
-					
-					
-					CtBlock dummy =getDummyStringIf();
-					((CtIf) dummy.getElements(new TypeFilter(CtIf.class)).get(0)).setThenStatement(element);
-					
-					 element.getParent(CtBlock.class).replace(dummy);;
-					System.out.println(element);
-					
-					
-				}**/
-				
-				
-				
+		this.init();
 
 
-			}
-			
-			CtExpression cdt = element.getCondition();
-			
-			
-			
-			CtBinaryOperator condition = getFactory().Core().createBinaryOperator();
-			
-			condition.setKind(BinaryOperatorKind.AND);
-			
-			condition.setLeftHandOperand(cdt);
-			condition.setRightHandOperand(((CtIf)getDummyIf().getElements(new TypeFilter(CtIf.class)).get(0)).getCondition());
-			
-			
-			element.setCondition(condition);
-			
+
+		int addLoop =  1+ (int)(Math.random() * ((4 - 1)));
+
+
+		CtBlock dummyIf =null;
+		switch(addLoop){
+		case  1 : dummyIf=getDummyIf(); break;
+		case  2 : dummyIf=getDummyStringIf(); break;
+		case  3 : dummyIf=getDummyAndIf(); break;
+		case  4 : dummyIf=getDummyOrIf(); break;
+		default:
 		}
 
-		public void init(){
-			type = null;
+		fi = (CtBlock) element.getThenStatement();
 
-			try {
-				type = getLoops();
-			} catch (Exception e) {
-				System.out.println("Fail to get dummy loop : "+e);
-			}
+		fi = (CtBlock) element.getThenStatement();
+		element.setThenStatement(dummyIf);
+		((CtIf) element.getThenStatement().getElements(new TypeFilter(CtIf.class)).get(0)).setThenStatement(fi);
 
-			if(type != null){
-				this.ifs= type.getElements(new TypeFilter<CtIf>(CtIf.class));
-			}
 
-		}
-
-		public <T extends CtType<?>> T getLoops() throws Exception {
-			SpoonCompiler comp = new Launcher().createCompiler();
-			comp.addInputSources(SpoonResourceHelper.resources("../Processors/src/main/java/com/tibo/processors/util/UselessIfs.java"));
-			comp.build();
-			return comp.getFactory().Package().get("com.tibo.processors.util").getType("UselessIfs");
-		}
-
-		public CtBlock getDummyIf(){
-
-			CtMethod<?> dummyIf = type.getElements(new NameFilter<CtMethod<?>>("UselessPositiveIf")).get(0);
-	
-			return dummyIf.getBody();
-		}
 		
-		public CtBlock getDummyStringIf(){
+		CtExpression cdt = element.getCondition();
 
-			CtMethod<?> dummyIf = type.getElements(new NameFilter<CtMethod<?>>("UselessPositiveIfWithString")).get(0);
-	
-			return dummyIf.getBody();
-		}
-		
-		
-		 
-		
+
+
+		CtBinaryOperator condition = getFactory().Core().createBinaryOperator();
+
+		condition.setKind(BinaryOperatorKind.AND);
+
+		condition.setLeftHandOperand(cdt);
+		condition.setRightHandOperand(((CtIf)getDummyAndIf().getElements(new TypeFilter(CtIf.class)).get(0)).getCondition());
+
+
+		element.setCondition(condition);
+
 	}
+
+	public void init(){
+		type = null;
+
+		try {
+			type = getLoops();
+		} catch (Exception e) {
+			System.out.println("Fail to get dummy loop : "+e);
+		}
+
+		if(type != null){
+			this.ifs= type.getElements(new TypeFilter<CtIf>(CtIf.class));
+		}
+
+	}
+
+	public <T extends CtType<?>> T getLoops() throws Exception {
+		SpoonCompiler comp = new Launcher().createCompiler();
+		comp.addInputSources(SpoonResourceHelper.resources("../Processors/src/main/java/com/tibo/processors/util/UselessIfs.java"));
+		comp.build();
+		return comp.getFactory().Package().get("com.tibo.processors.util").getType("UselessIfs");
+	}
+
+	public CtBlock getDummyIf(){
+
+		CtMethod<?> dummyIf = type.getElements(new NameFilter<CtMethod<?>>("UselessPositiveIf")).get(0);
+
+		return dummyIf.getBody();
+	}
+
+	public CtBlock getDummyStringIf(){
+
+		CtMethod<?> dummyIf = type.getElements(new NameFilter<CtMethod<?>>("UselessPositiveIfWithString")).get(0);
+
+		return dummyIf.getBody();
+	}
+
+
+
+	public CtBlock getDummyAndIf(){
+		CtMethod<?> dummyIf = type.getElements(new NameFilter<CtMethod<?>>("UselessPositiveAndIf")).get(0);
+
+		return dummyIf.getBody();
+
+	}
+
+
+	public CtBlock getDummyOrIf(){
+		CtMethod<?> dummyIf = type.getElements(new NameFilter<CtMethod<?>>("UselessPositiveOrIf")).get(0);
+
+		return dummyIf.getBody();
+
+	}
+
+
+
+
+}

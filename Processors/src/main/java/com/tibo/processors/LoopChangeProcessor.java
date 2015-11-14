@@ -27,31 +27,72 @@ public class LoopChangeProcessor extends AbstractProcessor<CtLoop> {
 	private List<CtFor> fors;
 	private CtType<?> type;
 	
+
 	@Override
 	public void process(CtLoop element) {		
 		// On récupère le body actuel :
 
-		CtBlock body;
+		
 
 		this.init();
 
 
 
-		int nbAddLoop =  1+ (int)(Math.random() * ((3 - 1)));
+		int addLoop =  1+ (int)(Math.random() * ((3 - 1)));
 
-		nbAddLoop =1;
 
-		for(int i = nbAddLoop;i > 0; i--){
-			body = (CtBlock) element.getBody();
+			switch(addLoop){
+			case  1 : setDummyForI(element); break;
+			case  2 : setDummyForJ(element); break;
+			case  3 : setDummyWhile(element); break;
+			default:
+			}
 
-		
-			element.setBody(getDummyFor());
-	
-			((CtLoop) element.getBody().getElements(new TypeFilter(CtLoop.class)).get(0)).setBody(body);
-			
 
 
 		}
+
+
+	
+
+
+
+	private void setDummyWhile(CtLoop element) {
+		
+		// On récupère le body actuel :
+		CtStatement body;
+		
+		body = element.getBody();
+		element.setBody(getDummyWhile());
+
+		CtBlock bodyLoop =(CtBlock) ((CtLoop) element.getBody().getElements(new TypeFilter(CtLoop.class)).get(0)).getBody();
+		bodyLoop.insertBegin(body);
+
+	}
+
+
+
+	private void setDummyForJ(CtLoop element) {
+		// On récupère le body actuel :
+				CtBlock body;
+				
+				body = (CtBlock) element.getBody();
+				element.setBody(getDummyForJ());
+
+				((CtLoop) element.getBody().getElements(new TypeFilter(CtLoop.class)).get(0)).setBody(body);
+		
+	}
+
+
+
+	private void setDummyForI(CtLoop element) {
+		// On récupère le body actuel :
+		CtBlock body;
+		
+		body = (CtBlock) element.getBody();
+		element.setBody(getDummyForI());
+
+		((CtLoop) element.getBody().getElements(new TypeFilter(CtLoop.class)).get(0)).setBody(body);
 		
 
 	}
@@ -78,14 +119,27 @@ public class LoopChangeProcessor extends AbstractProcessor<CtLoop> {
 		return comp.getFactory().Package().get("com.tibo.processors.util").getType("UselessLoops");
 	}
 
-	public CtBlock getDummyFor(){
+	public CtBlock getDummyForI(){
 
-		CtMethod<?> dummyFor = type.getElements(new NameFilter<CtMethod<?>>("UselessFor")).get(0);
-	
+		CtMethod<?> dummyFor = type.getElements(new NameFilter<CtMethod<?>>("UselessForI")).get(0);
+
 		return dummyFor.getBody();
 	}
 
-	
+
+	public CtBlock getDummyForJ(){
+
+		CtMethod<?> dummyFor = type.getElements(new NameFilter<CtMethod<?>>("UselessForJ")).get(0);
+
+		return dummyFor.getBody();
+	}
+
+	public CtBlock getDummyWhile(){
+
+		CtMethod<?> dummyFor = type.getElements(new NameFilter<CtMethod<?>>("UselessWhile")).get(0);
+
+		return dummyFor.getBody();
+	}
 
 
 }

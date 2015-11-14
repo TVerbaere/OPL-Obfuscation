@@ -38,7 +38,7 @@ public class UselessIfs {
 	}	
 
 	void UselessPositiveAndIf(){
-		if(5 == new Integer("5") && !(new String[5].length == 1)){
+		if(5 == new Integer("5") && !(new String[5].length == Integer.parseInt("1"))){
 
 		}
 	}
