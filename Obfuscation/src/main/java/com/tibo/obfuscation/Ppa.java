@@ -1,5 +1,7 @@
 package com.tibo.obfuscation;
 
+import com.tibo.tititatatototutu.ulul;
+
 public class Ppa implements ulul{
 	
 
@@ -9,7 +11,7 @@ public class Ppa implements ulul{
 	}
 
 	public int toto(int i) {
-		for(int j = i ; j > 0;j--){
+		for(int j = i ; j >= 0;j--){
 		  
 		  System.out.println(i);
 		  

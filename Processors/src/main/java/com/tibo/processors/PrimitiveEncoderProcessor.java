@@ -43,7 +43,7 @@ public class PrimitiveEncoderProcessor extends AbstractProcessor<CtLiteral> {
 			String nm = Integer.toBinaryString(value);
 									
 			CtCodeSnippetExpression snippet = getFactory().Core().createCodeSnippetExpression();
-			snippet.setValue("Integer.decode(\""+nm+"\")");
+			snippet.setValue("Integer.parseInt(\""+nm+"\",2)");
 
 			element.replace(snippet);
 			
